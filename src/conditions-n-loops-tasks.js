@@ -390,7 +390,7 @@ function sortByAsc(/* arr */) {
 function shuffleChar(str, iterations) {
   let result = str;
 
-  for (let i = 0; i < iterations; i += 1) {
+  for (let i = 1; i <= iterations; i += 1) {
     let charsToShuffle = '';
     let strWithoutShuffle = '';
 
@@ -403,6 +403,11 @@ function shuffleChar(str, iterations) {
     }
 
     result = strWithoutShuffle + charsToShuffle;
+
+    if (result === str) {
+      const lastSameOperationIndex = iterations - (iterations % i);
+      i = lastSameOperationIndex;
+    }
   }
 
   return result;
